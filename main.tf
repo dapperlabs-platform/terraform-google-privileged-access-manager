@@ -16,7 +16,7 @@ resource "google_privileged_access_manager_entitlement" "entitlement" {
     gcp_iam_access {
       role_bindings {
         role = each.value.role
-        #condition_expression = "request.time < timestamp(\"2024-04-23T18:30:00.000Z\")"
+        condition_expression = each.value.condition_expression
       }
       resource      = "//cloudresourcemanager.googleapis.com/projects/${var.project_id}"
       resource_type = "cloudresourcemanager.googleapis.com/Project"
